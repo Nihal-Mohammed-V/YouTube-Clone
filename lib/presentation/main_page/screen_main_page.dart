@@ -26,7 +26,7 @@ class ScreenMainPage extends StatelessWidget {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationWidget(),
+      bottomNavigationBar: YBottomNavigation(),
     );
   }
 }
