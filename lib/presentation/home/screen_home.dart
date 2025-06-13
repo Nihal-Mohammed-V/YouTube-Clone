@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/presentation/home/widgets/custom_chip.dart';
+import 'package:youtube_clone/presentation/widgets/custom_chip.dart';
 import 'package:youtube_clone/presentation/widgets/appbar.dart';
 
 class ScreenHome extends StatelessWidget {
@@ -18,17 +18,21 @@ class ScreenHome extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(left: 12, right: 8),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
+                GestureDetector(
+                  onTap: () => Scaffold.of(context).openDrawer(),
+
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 12, right: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white12,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Icon(Icons.explore, color: Colors.white),
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.white12,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Icon(Icons.explore, color: Colors.white),
                 ),
                 YCustomChip(),
               ],

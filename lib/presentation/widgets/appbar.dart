@@ -11,7 +11,7 @@ class YAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      color: Colors.grey[850],
+      color: Colors.black,
       child: SafeArea(
         bottom: false,
         child: Row(
@@ -19,12 +19,12 @@ class YAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             Row(
               children: [
-                Image.network(
-                  'https://pngdownload.io/wp-content/uploads/2023/12/YouTube-Logo-PNG-Symbol-for-Video-Platform-Transparent-jpg.webp',
-                  height: 24,
-                  width: 24,
+                SizedBox(
+                  width: 35,
+                  height: 35,
+                  child: Image.asset('assets/images/youtube.png'),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 2),
                 Text(
                   title,
                   style: GoogleFonts.poppins(

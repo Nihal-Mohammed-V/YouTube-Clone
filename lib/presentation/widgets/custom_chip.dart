@@ -31,6 +31,7 @@ class YCustomChip extends StatelessWidget {
                     labelStyle: TextStyle(color: Colors.white),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
+                      side: BorderSide(color: Colors.transparent),
                     ),
                   ),
                 );

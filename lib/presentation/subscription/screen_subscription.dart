@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/presentation/subscription/widgets/scrollable_avathar.dart';
 import 'package:youtube_clone/presentation/widgets/appbar.dart';
+import 'package:youtube_clone/presentation/widgets/custom_chip.dart';
 
 class ScreenSubscription extends StatelessWidget {
   const ScreenSubscription({super.key});
@@ -11,7 +13,7 @@ class ScreenSubscription extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: YAppBar(title: 'YouTube'),
       ),
-      body: Center(child: Text('ScreenSubscription')),
+      body: Column(children: [YAvatarList(), YCustomChip()]),
     );
   }
 }

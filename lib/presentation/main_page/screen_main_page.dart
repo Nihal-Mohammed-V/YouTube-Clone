@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/presentation/home/screen_home.dart';
+import 'package:youtube_clone/presentation/home/widgets/drawer.dart';
 import 'package:youtube_clone/presentation/main_page/widgets/bottom_nav.dart';
 import 'package:youtube_clone/presentation/profile/screen_profile.dart';
 import 'package:youtube_clone/presentation/shorts/screen_short.dart';
@@ -18,6 +19,7 @@ class ScreenMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: YTDrawer(),
       body: SafeArea(
         child: ValueListenableBuilder(
           valueListenable: indexChangeNotifier,
