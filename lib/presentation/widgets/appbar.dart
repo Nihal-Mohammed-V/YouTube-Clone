@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:youtube_clone/presentation/widgets/search.dart';
 
 class YAppBar extends StatelessWidget implements PreferredSizeWidget {
   const YAppBar({super.key, required this.title});
@@ -36,12 +37,25 @@ class YAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             Row(
-              children: const [
+              children: [
                 Icon(Icons.cast, color: Colors.white, size: 28),
                 SizedBox(width: 16),
                 Icon(Icons.notifications_none, color: Colors.white, size: 28),
                 SizedBox(width: 16),
-                Icon(Icons.search_outlined, color: Colors.white, size: 28),
+                InkWell(
+                  splashColor: Colors.grey,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SearchWidget()),
+                    );
+                  },
+                  child: Icon(
+                    Icons.search_outlined,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                ),
               ],
             ),
           ],

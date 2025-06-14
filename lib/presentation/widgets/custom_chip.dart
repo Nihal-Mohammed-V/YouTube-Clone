@@ -26,6 +26,7 @@ class YCustomChip extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: Chip(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                     label: Text(category),
                     backgroundColor: Colors.grey[850],
                     labelStyle: TextStyle(color: Colors.white),
