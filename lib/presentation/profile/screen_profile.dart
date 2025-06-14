@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/presentation/profile/widget/appbar.dart';
+import 'package:youtube_clone/presentation/profile/widget/history_section.dart';
+import 'package:youtube_clone/presentation/profile/widget/profile_chip.dart';
 import 'package:youtube_clone/presentation/profile/widget/profile_section.dart';
 
 class ScreenProfile extends StatelessWidget {
@@ -12,7 +14,9 @@ class ScreenProfile extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: SAppBar(),
       ),
-      body: ProfileSection(),
+      body: Column(
+        children: [const ProfileSection(), ProfileChip(), HistorySection()],
+      ),
     );
   }
 }

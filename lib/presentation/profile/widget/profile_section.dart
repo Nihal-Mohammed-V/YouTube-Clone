@@ -13,7 +13,7 @@ class ProfileSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
             child: CircleAvatar(
-              radius: 30,
+              radius: 35,
               backgroundImage: AssetImage('assets/images/youtube.png'),
             ),
           ),
@@ -26,7 +26,7 @@ class ProfileSection extends StatelessWidget {
                   Text(
                     'Nihal Mohammed',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 25,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
