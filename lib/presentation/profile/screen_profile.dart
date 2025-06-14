@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/presentation/widgets/appbar.dart';
+import 'package:youtube_clone/presentation/profile/widget/appbar.dart';
+import 'package:youtube_clone/presentation/profile/widget/profile_section.dart';
 
 class ScreenProfile extends StatelessWidget {
   const ScreenProfile({super.key});
@@ -9,9 +10,9 @@ class ScreenProfile extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
-        child: YAppBar(title: ''),
+        child: SAppBar(),
       ),
-      body: Center(child: Text('ScreenProfile')),
+      body: ProfileSection(),
     );
   }
 }

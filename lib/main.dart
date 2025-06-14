@@ -8,18 +8,27 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ytclone',
       theme: ThemeData(
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: const TextTheme(
+          bodySmall: TextStyle(color: Colors.black),
+          bodyMedium: TextStyle(color: Colors.black),
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
         scaffoldBackgroundColor: backgroundColor,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodySmall: TextStyle(color: Colors.white),
           bodyMedium: TextStyle(color: Colors.white),
         ),
       ),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: ScreenMainPage(),
     );

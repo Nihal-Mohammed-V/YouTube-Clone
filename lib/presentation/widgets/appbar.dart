@@ -41,7 +41,7 @@ class YAppBar extends StatelessWidget implements PreferredSizeWidget {
                 SizedBox(width: 16),
                 Icon(Icons.notifications_none, color: Colors.white, size: 28),
                 SizedBox(width: 16),
-                Icon(Icons.search, color: Colors.white, size: 28),
+                Icon(Icons.search_outlined, color: Colors.white, size: 28),
               ],
             ),
           ],

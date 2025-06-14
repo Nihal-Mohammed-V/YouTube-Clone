@@ -10,8 +10,7 @@ class YTDrawer extends StatelessWidget {
       width: 275,
       child: Drawer(
         backgroundColor: Colors.grey[900],
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
           children: [
             SafeArea(
               child: Padding(
@@ -36,20 +35,35 @@ class YTDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            _buildDrawerItem(Icons.local_fire_department_outlined, 'Trending'),
-            _buildDrawerItem(Icons.local_mall_outlined, 'Shopping'),
-            _buildDrawerItem(Icons.music_note_outlined, 'Music'),
-            _buildDrawerItem(Icons.movie_outlined, 'Films'),
-            _buildDrawerItem(Icons.sensors, 'Live'),
-            _buildDrawerItem(Icons.sports_esports_outlined, 'Gaming'),
-            _buildDrawerItem(Icons.newspaper_outlined, 'News'),
-            _buildDrawerItem(Icons.sports_soccer_outlined, 'Sport'),
-            _buildDrawerItem(Icons.school_outlined, 'Courses'),
-            _buildDrawerItem(Icons.dry_cleaning_outlined, 'Fasion & Beauty'),
-            _buildDrawerItem(Icons.podcasts_outlined, 'Podcasts'),
-            const Divider(color: Colors.white24),
-            _buildDrawerItem(Icons.settings, 'Settings'),
-            _buildDrawerItem(Icons.help, 'Help'),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  _buildDrawerItem(
+                    Icons.local_fire_department_outlined,
+                    'Trending',
+                  ),
+                  _buildDrawerItem(Icons.local_mall_outlined, 'Shopping'),
+                  _buildDrawerItem(Icons.music_note_outlined, 'Music'),
+                  _buildDrawerItem(Icons.movie_outlined, 'Films'),
+                  _buildDrawerItem(Icons.sensors, 'Live'),
+                  _buildDrawerItem(Icons.sports_esports_outlined, 'Gaming'),
+                  _buildDrawerItem(Icons.newspaper_outlined, 'News'),
+                  _buildDrawerItem(Icons.sports_soccer_outlined, 'Sport'),
+                  _buildDrawerItem(Icons.school_outlined, 'Courses'),
+                  _buildDrawerItem(
+                    Icons.dry_cleaning_outlined,
+                    'Fashion & Beauty',
+                  ),
+                  _buildDrawerItem(Icons.podcasts_outlined, 'Podcasts'),
+                  const Divider(color: Colors.white24),
+                  _buildBrandItem('YouTube Premium'),
+                  _buildBrandItem('YouTube Studio'),
+                  _buildBrandItem('YouTube Music'),
+                  _buildBrandItem('YouTube Kids'),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -61,6 +75,22 @@ class YTDrawer extends StatelessWidget {
       leading: Icon(icon, color: Colors.white),
       title: Text(title, style: const TextStyle(color: Colors.white)),
       onTap: () {},
+    );
+  }
+
+  Widget _buildBrandItem(String label) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SizedBox(
+            width: 35,
+            height: 35,
+            child: Image.asset('assets/images/youtube.png'),
+          ),
+        ),
+        Text(label, style: GoogleFonts.poppins(color: Colors.white)),
+      ],
     );
   }
 }
