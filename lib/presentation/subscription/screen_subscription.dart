@@ -10,14 +10,28 @@ class ScreenSubscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
+      appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: YAppBar(title: 'YouTube'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          YAvatarList(),
-          YCustomChip(),
+          // Avatars (Subscribed channels)
+          const SizedBox(height: 2),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: YAvatarList(),
+          ),
+
+          // Filter Chips
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: YCustomChip(),
+          ),
+
+          // Video feed
+          const SizedBox(height: 12),
           Expanded(
             child: ListView.builder(
               itemCount: 10,

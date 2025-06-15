@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/presentation/widgets/video_tile.dart';
 import 'package:youtube_clone/presentation/widgets/custom_chip.dart';
 import 'package:youtube_clone/presentation/widgets/appbar.dart';
+import 'package:youtube_clone/presentation/widgets/video_tile.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -15,7 +15,6 @@ class ScreenHome extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Horizontal Chip Bar
           SizedBox(
             height: 50,
             child: SingleChildScrollView(
