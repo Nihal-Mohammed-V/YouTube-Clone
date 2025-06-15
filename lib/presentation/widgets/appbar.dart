@@ -27,7 +27,7 @@ class YAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 SizedBox(width: 2),
                 Text(
-                  title,
+                  title,  
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

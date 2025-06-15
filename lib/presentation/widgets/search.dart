@@ -1,8 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchWidget extends StatelessWidget {
-  const SearchWidget({super.key});
+  final List<String> history = [
+    "Flutter tutorial",
+    "YouTube UI clone",
+    "Best smartphones 2025",
+    "Dart vs JavaScript",
+    "Funny cat videos",
+  ];
+  SearchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,7 @@ class SearchWidget extends StatelessWidget {
 
                   Expanded(
                     child: SizedBox(
-                      height: 40,
+                      height: 35,
                       child: TextField(
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
@@ -34,7 +40,7 @@ class SearchWidget extends StatelessWidget {
                           filled: true,
                           fillColor: Colors.grey[850],
                           contentPadding: const EdgeInsets.symmetric(
-                            vertical: 7,
+                            vertical: 5,
                             horizontal: 16,
                           ),
                           border: OutlineInputBorder(
@@ -49,16 +55,47 @@ class SearchWidget extends StatelessWidget {
 
                   const SizedBox(width: 10),
 
-                  // Mic icon
                   const Icon(Icons.mic, color: Colors.white),
                 ],
               ),
-              const SizedBox(height: 20),
-
-              const Center(
-                child: Text(
-                  'Start typing to search...',
-                  style: TextStyle(color: Colors.white54),
+              const SizedBox(height: 8),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: history.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+                      leading: const Icon(Icons.history, color: Colors.white70),
+                      title: Text(
+                        history[index],
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      trailing: SizedBox(
+                        width: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                'assets/images/youtube.png',
+                                width: 60,
+                                height: 35,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            const Icon(
+                              Icons.north_west,
+                              size: 16,
+                              color: Colors.white30,
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {},
+                    );
+                  },
                 ),
               ),
             ],
