@@ -19,30 +19,23 @@ class VideoRepositoryImpl implements IVideoRepository {
             thumbnails['default']?['url'] ??
             '';
       } else {
-        print('No items found in channel response');
         return '';
       }
     } else {
-      print('Failed to fetch channel details: ${response.body}');
       return '';
     }
   }
 
   @override
   Future<List<Video>> getVideos() async {
-    print('getVideos() called');
     final homeApi = ApiEndpoints.homeVideos();
-    print('Fetching videos from API: $homeApi');
 
     final response = await http.get(Uri.parse(homeApi));
-    print('Response status: ${response.statusCode}');
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      print('Decoded JSON data: $data');
 
       final List videosJson = data['items'];
-      print('Extracted ${videosJson.length} videos');
 
       final videos = await Future.wait(
         videosJson.map<Future<Video>>((item) async {
@@ -52,9 +45,7 @@ class VideoRepositoryImpl implements IVideoRepository {
 
           try {
             channelAvatar = await getChannelAvatar(channelId);
-          } catch (e) {
-            print('Error fetching avatar: $e');
-          }
+          } catch (e) {}
 
           return Video(
             id: item['id'] is String ? item['id'] : item['id']['videoId'] ?? '',
@@ -71,9 +62,6 @@ class VideoRepositoryImpl implements IVideoRepository {
 
       return videos;
     } else {
-      print(
-        'Failed to fetch videos. Status: ${response.statusCode}, Body: ${response.body}',
-      );
       throw Exception('Failed to load videos: ${response.statusCode}');
     }
   }
