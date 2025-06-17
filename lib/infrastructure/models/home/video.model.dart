@@ -8,7 +8,7 @@ class VideoModel {
   final String duration;
   final String views;
   final String uploadDate;
-
+  final String channelAvatarUrl;
   VideoModel({
     required this.id,
     required this.title,
@@ -17,6 +17,7 @@ class VideoModel {
     required this.duration,
     required this.views,
     required this.uploadDate,
+    required this.channelAvatarUrl,
   });
 
   factory VideoModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +29,7 @@ class VideoModel {
       duration: json['duration'],
       views: json['views'],
       uploadDate: json['uploadDate'],
+      channelAvatarUrl: json['channelAvatharUrl'],
     );
   }
 
@@ -40,6 +42,7 @@ class VideoModel {
       duration: duration,
       views: views,
       uploadDate: uploadDate,
+      channelAvatarUrl: channelAvatarUrl,
     );
   }
 }

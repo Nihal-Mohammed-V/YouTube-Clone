@@ -13,6 +13,7 @@ class Video with _$Video {
     required String duration,
     required String views,
     required String uploadDate,
+    required String channelAvatarUrl,
   }) = _Video;
   factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
 }

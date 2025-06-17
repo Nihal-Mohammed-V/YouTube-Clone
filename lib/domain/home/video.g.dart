@@ -14,6 +14,7 @@ _$VideoImpl _$$VideoImplFromJson(Map<String, dynamic> json) => _$VideoImpl(
       duration: json['duration'] as String,
       views: json['views'] as String,
       uploadDate: json['uploadDate'] as String,
+      channelAvatarUrl: json['channelAvatarUrl'] as String,
     );
 
 Map<String, dynamic> _$$VideoImplToJson(_$VideoImpl instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$VideoImplToJson(_$VideoImpl instance) =>
       'duration': instance.duration,
       'views': instance.views,
       'uploadDate': instance.uploadDate,
+      'channelAvatarUrl': instance.channelAvatarUrl,
     };

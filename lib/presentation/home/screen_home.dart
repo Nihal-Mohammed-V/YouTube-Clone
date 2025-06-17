@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube_clone/application/home/video_bloc.dart';
+import 'package:youtube_clone/application/home/video_event.dart';
 import 'package:youtube_clone/application/home/video_state.dart';
 import 'package:youtube_clone/presentation/widgets/custom_chip.dart';
 import 'package:youtube_clone/presentation/widgets/appbar.dart';
@@ -11,6 +12,10 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      debugPrint('Dispatching fetchVideos from StatelessWidget');
+      context.read<VideoBloc>().add(const VideoEvent.fetchVideos());
+    });
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
@@ -50,6 +55,7 @@ class ScreenHome extends StatelessWidget {
           Expanded(
             child: BlocBuilder<VideoBloc, VideoState>(
               builder: (context, state) {
+                print('Current state: $state');
                 return state.when(
                   initial: () => const Center(child: Text('Initializing...')),
                   loading:

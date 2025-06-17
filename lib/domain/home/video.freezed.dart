@@ -12,8 +12,7 @@ part of 'video.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Video _$VideoFromJson(Map<String, dynamic> json) {
   return _Video.fromJson(json);
@@ -28,6 +27,7 @@ mixin _$Video {
   String get duration => throw _privateConstructorUsedError;
   String get views => throw _privateConstructorUsedError;
   String get uploadDate => throw _privateConstructorUsedError;
+  String get channelAvatarUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,15 +39,15 @@ abstract class $VideoCopyWith<$Res> {
   factory $VideoCopyWith(Video value, $Res Function(Video) then) =
       _$VideoCopyWithImpl<$Res, Video>;
   @useResult
-  $Res call({
-    String id,
-    String title,
-    String thumbnailUrl,
-    String channelName,
-    String duration,
-    String views,
-    String uploadDate,
-  });
+  $Res call(
+      {String id,
+      String title,
+      String thumbnailUrl,
+      String channelName,
+      String duration,
+      String views,
+      String uploadDate,
+      String channelAvatarUrl});
 }
 
 /// @nodoc
@@ -70,67 +70,61 @@ class _$VideoCopyWithImpl<$Res, $Val extends Video>
     Object? duration = null,
     Object? views = null,
     Object? uploadDate = null,
+    Object? channelAvatarUrl = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            title:
-                null == title
-                    ? _value.title
-                    : title // ignore: cast_nullable_to_non_nullable
-                        as String,
-            thumbnailUrl:
-                null == thumbnailUrl
-                    ? _value.thumbnailUrl
-                    : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-                        as String,
-            channelName:
-                null == channelName
-                    ? _value.channelName
-                    : channelName // ignore: cast_nullable_to_non_nullable
-                        as String,
-            duration:
-                null == duration
-                    ? _value.duration
-                    : duration // ignore: cast_nullable_to_non_nullable
-                        as String,
-            views:
-                null == views
-                    ? _value.views
-                    : views // ignore: cast_nullable_to_non_nullable
-                        as String,
-            uploadDate:
-                null == uploadDate
-                    ? _value.uploadDate
-                    : uploadDate // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnailUrl: null == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      channelName: null == channelName
+          ? _value.channelName
+          : channelName // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      views: null == views
+          ? _value.views
+          : views // ignore: cast_nullable_to_non_nullable
+              as String,
+      uploadDate: null == uploadDate
+          ? _value.uploadDate
+          : uploadDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      channelAvatarUrl: null == channelAvatarUrl
+          ? _value.channelAvatarUrl
+          : channelAvatarUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$VideoImplCopyWith<$Res> implements $VideoCopyWith<$Res> {
   factory _$$VideoImplCopyWith(
-    _$VideoImpl value,
-    $Res Function(_$VideoImpl) then,
-  ) = __$$VideoImplCopyWithImpl<$Res>;
+          _$VideoImpl value, $Res Function(_$VideoImpl) then) =
+      __$$VideoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String title,
-    String thumbnailUrl,
-    String channelName,
-    String duration,
-    String views,
-    String uploadDate,
-  });
+  $Res call(
+      {String id,
+      String title,
+      String thumbnailUrl,
+      String channelName,
+      String duration,
+      String views,
+      String uploadDate,
+      String channelAvatarUrl});
 }
 
 /// @nodoc
@@ -138,9 +132,8 @@ class __$$VideoImplCopyWithImpl<$Res>
     extends _$VideoCopyWithImpl<$Res, _$VideoImpl>
     implements _$$VideoImplCopyWith<$Res> {
   __$$VideoImplCopyWithImpl(
-    _$VideoImpl _value,
-    $Res Function(_$VideoImpl) _then,
-  ) : super(_value, _then);
+      _$VideoImpl _value, $Res Function(_$VideoImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -152,61 +145,57 @@ class __$$VideoImplCopyWithImpl<$Res>
     Object? duration = null,
     Object? views = null,
     Object? uploadDate = null,
+    Object? channelAvatarUrl = null,
   }) {
-    return _then(
-      _$VideoImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        title:
-            null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String,
-        thumbnailUrl:
-            null == thumbnailUrl
-                ? _value.thumbnailUrl
-                : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-                    as String,
-        channelName:
-            null == channelName
-                ? _value.channelName
-                : channelName // ignore: cast_nullable_to_non_nullable
-                    as String,
-        duration:
-            null == duration
-                ? _value.duration
-                : duration // ignore: cast_nullable_to_non_nullable
-                    as String,
-        views:
-            null == views
-                ? _value.views
-                : views // ignore: cast_nullable_to_non_nullable
-                    as String,
-        uploadDate:
-            null == uploadDate
-                ? _value.uploadDate
-                : uploadDate // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$VideoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnailUrl: null == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      channelName: null == channelName
+          ? _value.channelName
+          : channelName // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      views: null == views
+          ? _value.views
+          : views // ignore: cast_nullable_to_non_nullable
+              as String,
+      uploadDate: null == uploadDate
+          ? _value.uploadDate
+          : uploadDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      channelAvatarUrl: null == channelAvatarUrl
+          ? _value.channelAvatarUrl
+          : channelAvatarUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$VideoImpl implements _Video {
-  const _$VideoImpl({
-    required this.id,
-    required this.title,
-    required this.thumbnailUrl,
-    required this.channelName,
-    required this.duration,
-    required this.views,
-    required this.uploadDate,
-  });
+  const _$VideoImpl(
+      {required this.id,
+      required this.title,
+      required this.thumbnailUrl,
+      required this.channelName,
+      required this.duration,
+      required this.views,
+      required this.uploadDate,
+      required this.channelAvatarUrl});
 
   factory _$VideoImpl.fromJson(Map<String, dynamic> json) =>
       _$$VideoImplFromJson(json);
@@ -225,10 +214,12 @@ class _$VideoImpl implements _Video {
   final String views;
   @override
   final String uploadDate;
+  @override
+  final String channelAvatarUrl;
 
   @override
   String toString() {
-    return 'Video(id: $id, title: $title, thumbnailUrl: $thumbnailUrl, channelName: $channelName, duration: $duration, views: $views, uploadDate: $uploadDate)';
+    return 'Video(id: $id, title: $title, thumbnailUrl: $thumbnailUrl, channelName: $channelName, duration: $duration, views: $views, uploadDate: $uploadDate, channelAvatarUrl: $channelAvatarUrl)';
   }
 
   @override
@@ -246,21 +237,15 @@ class _$VideoImpl implements _Video {
                 other.duration == duration) &&
             (identical(other.views, views) || other.views == views) &&
             (identical(other.uploadDate, uploadDate) ||
-                other.uploadDate == uploadDate));
+                other.uploadDate == uploadDate) &&
+            (identical(other.channelAvatarUrl, channelAvatarUrl) ||
+                other.channelAvatarUrl == channelAvatarUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    title,
-    thumbnailUrl,
-    channelName,
-    duration,
-    views,
-    uploadDate,
-  );
+  int get hashCode => Object.hash(runtimeType, id, title, thumbnailUrl,
+      channelName, duration, views, uploadDate, channelAvatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -270,20 +255,22 @@ class _$VideoImpl implements _Video {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$VideoImplToJson(this);
+    return _$$VideoImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Video implements Video {
-  const factory _Video({
-    required final String id,
-    required final String title,
-    required final String thumbnailUrl,
-    required final String channelName,
-    required final String duration,
-    required final String views,
-    required final String uploadDate,
-  }) = _$VideoImpl;
+  const factory _Video(
+      {required final String id,
+      required final String title,
+      required final String thumbnailUrl,
+      required final String channelName,
+      required final String duration,
+      required final String views,
+      required final String uploadDate,
+      required final String channelAvatarUrl}) = _$VideoImpl;
 
   factory _Video.fromJson(Map<String, dynamic> json) = _$VideoImpl.fromJson;
 
@@ -301,6 +288,8 @@ abstract class _Video implements Video {
   String get views;
   @override
   String get uploadDate;
+  @override
+  String get channelAvatarUrl;
   @override
   @JsonKey(ignore: true)
   _$$VideoImplCopyWith<_$VideoImpl> get copyWith =>

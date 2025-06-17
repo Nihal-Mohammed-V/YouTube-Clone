@@ -2,57 +2,74 @@ import 'package:youtube_clone/core/strings.dart';
 import 'package:youtube_clone/infrastructure/api_key.dart';
 
 class ApiEndpoints {
-  static const String baseUrl = yBaseUrl;
+  static const String baseUrl =
+      yBaseUrl; // usually https://www.googleapis.com/youtube/v3
 
-  // Home feed videos
-  static const String homeVideos =
-      '$baseUrl/videos?part=snippet&chart=mostPopular&maxResults=10&regionCode=IN&key=$apiKey';
+  /// Home feed - most popular videos with metadata
+  static String homeVideos({int maxResults = 10, String? pageToken}) {
+    final base =
+        '$baseUrl/videos?part=snippet,statistics,contentDetails'
+        '&chart=mostPopular'
+        '&maxResults=$maxResults'
+        '&regionCode=IN'
+        '&key=$apiKey';
+    return pageToken != null ? '$base&pageToken=$pageToken' : base;
+  }
 
-  // Video detail by ID
-  static String videoDetails(String id) => '$baseUrl/videos/$id';
+  /// Video detail by ID (with snippet, statistics, etc.)
+  static String videoDetails(String id) =>
+      '$baseUrl/videos?part=snippet,statistics,contentDetails&id=$id&key=$apiKey';
 
-  // Search videos
-  static String searchVideos(String query) => '$baseUrl/search?q=$query';
+  /// Search videos
+  static String searchVideos(String query, {String? pageToken}) {
+    final base =
+        '$baseUrl/search?part=snippet&type=video&q=$query&maxResults=10&key=$apiKey';
+    return pageToken != null ? '$base&pageToken=$pageToken' : base;
+  }
 
-  // Trending videos
-  static const String trendingVideos = '$baseUrl/videos/trending';
+  /// Trending videos (alias of homeVideos)
+  static String trendingVideos({int maxResults = 10, String? pageToken}) =>
+      homeVideos(maxResults: maxResults, pageToken: pageToken);
 
-  // Channel details
+  /// Channel details (for avatar, name, etc.)
   static String channelDetails(String channelId) =>
-      '$baseUrl/channels/$channelId';
+      '$baseUrl/channels?part=snippet,statistics&id=$channelId&key=$apiKey';
 
-  // Channel videos
-  static String channelVideos(String channelId) =>
-      '$baseUrl/channels/$channelId/videos';
+  /// Videos uploaded by a channel
+  static String channelVideos(String channelId, {String? pageToken}) {
+    final base =
+        '$baseUrl/search?part=snippet&channelId=$channelId&order=date&type=video&maxResults=10&key=$apiKey';
+    return pageToken != null ? '$base&pageToken=$pageToken' : base;
+  }
 
-  // Comments for a video
-  static String videoComments(String videoId) =>
-      '$baseUrl/videos/$videoId/comments';
+  /// Comments for a video
+  static String videoComments(String videoId, {String? pageToken}) {
+    final base =
+        '$baseUrl/commentThreads?part=snippet&videoId=$videoId&maxResults=10&key=$apiKey';
+    return pageToken != null ? '$base&pageToken=$pageToken' : base;
+  }
 
-  // Post a new comment
-  static String postComment(String videoId) =>
-      '$baseUrl/videos/$videoId/comments';
+  // ⚠️ The following endpoints (like, dislike, comment, upload) require OAuth 2.0 tokens and proper scopes.
+  // These are placeholders unless you're doing authenticated operations.
 
-  // Like a video
-  static String likeVideo(String videoId) => '$baseUrl/videos/$videoId/like';
+  /// Like a video (requires OAuth token)
+  static String likeVideo(String videoId) =>
+      '$baseUrl/videos/rate?id=$videoId&rating=like&key=$apiKey';
 
-  // Dislike a video
+  /// Dislike a video (requires OAuth token)
   static String dislikeVideo(String videoId) =>
-      '$baseUrl/videos/$videoId/dislike';
+      '$baseUrl/videos/rate?id=$videoId&rating=dislike&key=$apiKey';
 
-  // Subscribe to channel
-  static String subscribeChannel(String channelId) =>
-      '$baseUrl/channels/$channelId/subscribe';
+  /// Subscribe to a channel (requires OAuth token)
+  static const String subscribeChannel = '$baseUrl/subscriptions?part=snippet';
 
-  // Unsubscribe from channel
-  static String unsubscribeChannel(String channelId) =>
-      '$baseUrl/channels/$channelId/unsubscribe';
+  /// Upload a new video (requires OAuth token)
+  static const String uploadVideo =
+      'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status';
 
-  // Upload a new video
-  static const String uploadVideo = '$baseUrl/videos/upload';
-
-  // Auth endpoints (if applicable)
-  static const String login = '$baseUrl/auth/login';
+  /// Auth endpoints — typically handled separately
+  static const String login =
+      '$baseUrl/auth/login'; // Only valid in custom backend
   static const String register = '$baseUrl/auth/register';
   static const String logout = '$baseUrl/auth/logout';
 }
