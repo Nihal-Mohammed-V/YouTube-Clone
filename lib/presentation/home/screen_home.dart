@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:youtube_clone/application/home/video_bloc.dart';
+import 'package:youtube_clone/application/home/video_state.dart';
 import 'package:youtube_clone/presentation/widgets/custom_chip.dart';
 import 'package:youtube_clone/presentation/widgets/appbar.dart';
 import 'package:youtube_clone/presentation/widgets/video_tile.dart';
@@ -15,6 +18,7 @@ class ScreenHome extends StatelessWidget {
       ),
       body: Column(
         children: [
+          // Top chips and explore icon
           SizedBox(
             height: 50,
             child: SingleChildScrollView(
@@ -44,9 +48,21 @@ class ScreenHome extends StatelessWidget {
           ),
 
           Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) => VideoTile(index: index),
+            child: BlocBuilder<VideoBloc, VideoState>(
+              builder: (context, state) {
+                return state.when(
+                  initial: () => const Center(child: Text('Initializing...')),
+                  loading:
+                      () => const Center(child: CircularProgressIndicator()),
+                  loaded:
+                      (videos) => ListView.builder(
+                        itemCount: videos.length,
+                        itemBuilder:
+                            (context, index) => VideoTile(video: videos[index]),
+                      ),
+                  error: (msg) => Center(child: Text('Error: $msg')),
+                );
+              },
             ),
           ),
         ],
