@@ -25,7 +25,7 @@ class VideoTile extends StatelessWidget {
             // Navigate to the video player screen
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const YTVideoPlayerScreen()),
+              MaterialPageRoute(builder: (_) => const ScreenPlayer()),
             );
           },
           child: ClipRRect(
