@@ -25,7 +25,7 @@ class VideoTile extends StatelessWidget {
             // Navigate to the video player screen
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const ScreenPlayer()),
+              MaterialPageRoute(builder: (_) => ScreenPlayer(video: video)),
             );
           },
           child: ClipRRect(
@@ -79,7 +79,7 @@ class VideoTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${video.channelName} • ${video.views} views • ${timeago.format(DateTime.parse(video.uploadDate))}',
+                      '${video.channelName} •${formatViews(video.views)} views • ${timeago.format(DateTime.parse(video.uploadDate))}',
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 13,
@@ -98,5 +98,19 @@ class VideoTile extends StatelessWidget {
         const SizedBox(height: 16),
       ],
     );
+  }
+
+  String formatViews(String views) {
+    final count = int.tryParse(views) ?? 0;
+
+    if (count >= 1000000000) {
+      return '${(count / 1000000000).toStringAsFixed(1)}B';
+    } else if (count >= 1000000) {
+      return '${(count / 1000000).toStringAsFixed(1)}M';
+    } else if (count >= 1000) {
+      return '${(count / 1000).toStringAsFixed(1)}K';
+    } else {
+      return count.toString();
+    }
   }
 }

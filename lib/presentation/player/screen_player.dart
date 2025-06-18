@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube_clone/application/home/video_bloc.dart';
+import 'package:youtube_clone/domain/home/video.dart';
 import 'package:youtube_clone/presentation/player/widgets/action_button.dart';
 import 'package:youtube_clone/presentation/player/widgets/channel_info.dart';
 import 'package:youtube_clone/presentation/player/widgets/video_details.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ScreenPlayer extends StatelessWidget {
-  const ScreenPlayer({super.key});
+  final Video video;
+  const ScreenPlayer({super.key, required this.video});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,10 @@ class ScreenPlayer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 player,
-                const VideoDetails(),
+                VideoDetails(video: video),
+
+                ChannelInfo(video: video),
                 const VideoActions(),
-                const Divider(color: Colors.grey, height: 20),
-                const ChannelInfo(),
               ],
             ),
           ),

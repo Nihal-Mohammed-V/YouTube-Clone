@@ -40,6 +40,7 @@ class VideoRepositoryImpl implements IVideoRepository {
       final videos = await Future.wait(
         videosJson.map<Future<Video>>((item) async {
           final snippet = item['snippet'];
+          final statistics = item['statistics'];
           final channelId = snippet['channelId'];
           String channelAvatar = '';
 
@@ -53,7 +54,7 @@ class VideoRepositoryImpl implements IVideoRepository {
             thumbnailUrl: snippet['thumbnails']?['high']?['url'] ?? '',
             channelName: snippet['channelTitle'] ?? '',
             duration: 'Unknown',
-            views: 'N/A',
+            views: statistics['viewCount'] ?? '0',
             uploadDate: snippet['publishedAt'] ?? '',
             channelAvatarUrl: channelAvatar,
           );

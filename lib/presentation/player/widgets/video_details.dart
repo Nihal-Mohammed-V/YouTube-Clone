@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import 'package:youtube_clone/domain/home/video.dart';
 
 class VideoDetails extends StatelessWidget {
-  const VideoDetails({super.key});
+  final Video video;
+  const VideoDetails({super.key, required this.video});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: Text(
-            "Video Title Goes Here",
+            video.title,
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
@@ -22,12 +25,25 @@ class VideoDetails extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 12),
           child: Text(
-            "123K views • 2 hours ago",
+            "${formatViews(video.views)} views • ${timeago.format(DateTime.parse(video.uploadDate))}",
             style: TextStyle(color: Colors.grey, fontSize: 13),
           ),
         ),
-        Divider(color: Colors.grey, height: 20),
       ],
     );
+  }
+
+  String formatViews(String views) {
+    final count = int.tryParse(views) ?? 0;
+
+    if (count >= 1000000000) {
+      return '${(count / 1000000000).toStringAsFixed(1)}B';
+    } else if (count >= 1000000) {
+      return '${(count / 1000000).toStringAsFixed(1)}M';
+    } else if (count >= 1000) {
+      return '${(count / 1000).toStringAsFixed(1)}K';
+    } else {
+      return count.toString();
+    }
   }
 }
