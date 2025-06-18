@@ -29,7 +29,7 @@ class VideoModel {
       duration: json['duration'],
       views: json['views'],
       uploadDate: json['uploadDate'],
-      channelAvatarUrl: json['channelAvatharUrl'],
+      channelAvatarUrl: json['channelAvatarUrl'],
     );
   }
 
