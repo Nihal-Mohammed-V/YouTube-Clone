@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:youtube_clone/application/home/video_bloc.dart';
+import 'package:youtube_clone/application/home/video_event.dart';
 import 'package:youtube_clone/domain/home/video.dart';
+import 'package:youtube_clone/presentation/player/screen_player.dart';
 
 class VideoTile extends StatelessWidget {
   final Video video;
@@ -13,15 +17,28 @@ class VideoTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Thumbnail
-        ClipRRect(
-          borderRadius: BorderRadius.circular(2),
-          child: Image.network(
-            video.thumbnailUrl,
-            width: double.infinity,
-            height: 235,
-            fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () {
+            // Trigger play event in BLoC
+            context.read<VideoBloc>().add(VideoEvent.playVideo(video.id));
+
+            // Navigate to the video player screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const YTVideoPlayerScreen()),
+            );
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(2),
+            child: Image.network(
+              video.thumbnailUrl,
+              width: double.infinity,
+              height: 235,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
+
         const SizedBox(height: 8),
 
         // Info Row

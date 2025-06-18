@@ -5,4 +5,5 @@ part 'video_event.freezed.dart';
 @freezed
 class VideoEvent with _$VideoEvent {
   const factory VideoEvent.fetchVideos() = _FetchVideos;
+  const factory VideoEvent.playVideo(String videoId) = _PlayVideo;
 }

@@ -19,32 +19,38 @@ mixin _$VideoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchVideos,
+    required TResult Function(String videoId) playVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchVideos,
+    TResult? Function(String videoId)? playVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchVideos,
+    TResult Function(String videoId)? playVideo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchVideos value) fetchVideos,
+    required TResult Function(_PlayVideo value) playVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchVideos value)? fetchVideos,
+    TResult? Function(_PlayVideo value)? playVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchVideos value)? fetchVideos,
+    TResult Function(_PlayVideo value)? playVideo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$FetchVideosImpl implements _FetchVideos {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchVideos,
+    required TResult Function(String videoId) playVideo,
   }) {
     return fetchVideos();
   }
@@ -115,6 +122,7 @@ class _$FetchVideosImpl implements _FetchVideos {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchVideos,
+    TResult? Function(String videoId)? playVideo,
   }) {
     return fetchVideos?.call();
   }
@@ -123,6 +131,7 @@ class _$FetchVideosImpl implements _FetchVideos {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchVideos,
+    TResult Function(String videoId)? playVideo,
     required TResult orElse(),
   }) {
     if (fetchVideos != null) {
@@ -135,6 +144,7 @@ class _$FetchVideosImpl implements _FetchVideos {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchVideos value) fetchVideos,
+    required TResult Function(_PlayVideo value) playVideo,
   }) {
     return fetchVideos(this);
   }
@@ -143,6 +153,7 @@ class _$FetchVideosImpl implements _FetchVideos {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchVideos value)? fetchVideos,
+    TResult? Function(_PlayVideo value)? playVideo,
   }) {
     return fetchVideos?.call(this);
   }
@@ -151,6 +162,7 @@ class _$FetchVideosImpl implements _FetchVideos {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchVideos value)? fetchVideos,
+    TResult Function(_PlayVideo value)? playVideo,
     required TResult orElse(),
   }) {
     if (fetchVideos != null) {
@@ -162,4 +174,137 @@ class _$FetchVideosImpl implements _FetchVideos {
 
 abstract class _FetchVideos implements VideoEvent {
   const factory _FetchVideos() = _$FetchVideosImpl;
+}
+
+/// @nodoc
+abstract class _$$PlayVideoImplCopyWith<$Res> {
+  factory _$$PlayVideoImplCopyWith(
+          _$PlayVideoImpl value, $Res Function(_$PlayVideoImpl) then) =
+      __$$PlayVideoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String videoId});
+}
+
+/// @nodoc
+class __$$PlayVideoImplCopyWithImpl<$Res>
+    extends _$VideoEventCopyWithImpl<$Res, _$PlayVideoImpl>
+    implements _$$PlayVideoImplCopyWith<$Res> {
+  __$$PlayVideoImplCopyWithImpl(
+      _$PlayVideoImpl _value, $Res Function(_$PlayVideoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? videoId = null,
+  }) {
+    return _then(_$PlayVideoImpl(
+      null == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlayVideoImpl implements _PlayVideo {
+  const _$PlayVideoImpl(this.videoId);
+
+  @override
+  final String videoId;
+
+  @override
+  String toString() {
+    return 'VideoEvent.playVideo(videoId: $videoId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlayVideoImpl &&
+            (identical(other.videoId, videoId) || other.videoId == videoId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, videoId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlayVideoImplCopyWith<_$PlayVideoImpl> get copyWith =>
+      __$$PlayVideoImplCopyWithImpl<_$PlayVideoImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchVideos,
+    required TResult Function(String videoId) playVideo,
+  }) {
+    return playVideo(videoId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchVideos,
+    TResult? Function(String videoId)? playVideo,
+  }) {
+    return playVideo?.call(videoId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchVideos,
+    TResult Function(String videoId)? playVideo,
+    required TResult orElse(),
+  }) {
+    if (playVideo != null) {
+      return playVideo(videoId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchVideos value) fetchVideos,
+    required TResult Function(_PlayVideo value) playVideo,
+  }) {
+    return playVideo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchVideos value)? fetchVideos,
+    TResult? Function(_PlayVideo value)? playVideo,
+  }) {
+    return playVideo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchVideos value)? fetchVideos,
+    TResult Function(_PlayVideo value)? playVideo,
+    required TResult orElse(),
+  }) {
+    if (playVideo != null) {
+      return playVideo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayVideo implements VideoEvent {
+  const factory _PlayVideo(final String videoId) = _$PlayVideoImpl;
+
+  String get videoId;
+  @JsonKey(ignore: true)
+  _$$PlayVideoImplCopyWith<_$PlayVideoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
